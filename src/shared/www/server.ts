@@ -23,7 +23,7 @@ app.use(
       .json({ status: 'err', message: 'Erro interno no sistema.' });
   },
 );
-
-app.listen(process.env.SERVER_URL || process.env.DEV_PORT, () => {
-  console.log(`🛸 Servidor iniciado com sucesso!`);
+const port = process.env.SERVER_URL || process.env.DEV_PORT;
+app.listen(port, () => {
+  console.log(`🛸 Servidor iniciado com sucesso na porta: ${port}`);
 });
