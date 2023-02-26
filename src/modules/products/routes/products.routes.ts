@@ -1,13 +1,57 @@
 import { Router } from 'express';
 import ProductController from '../controllers/ProductsController';
+import { celebrate, Joi, Segments } from 'celebrate';
 
 const productsRoutes = Router();
 const productController = new ProductController();
 
 productsRoutes.get('/', productController.index);
-productsRoutes.get('/:id', productController.findOne);
-productsRoutes.post('/', productController.create);
-productsRoutes.put('/:id', productController.update);
-productsRoutes.delete('/:id', productController.delete);
+
+productsRoutes.get(
+  '/:id',
+  celebrate({
+    [Segments.PARAMS]: {
+      id: Joi.string().uuid().required(),
+    },
+  }),
+  productController.findOne,
+);
+
+productsRoutes.post(
+  '/',
+  celebrate({
+    [Segments.BODY]: {
+      name: Joi.string().required(),
+      price: Joi.number().precision(2).required(),
+      quantity: Joi.number().required(),
+    },
+  }),
+  productController.create,
+);
+
+productsRoutes.put(
+  '/:id',
+  celebrate({
+    [Segments.PARAMS]: {
+      id: Joi.string().uuid().required(),
+    },
+    [Segments.BODY]: {
+      name: Joi.string().required(),
+      price: Joi.number().precision(2).required(),
+      quantity: Joi.number().required(),
+    },
+  }),
+  productController.update,
+);
+
+productsRoutes.delete(
+  '/:id',
+  celebrate({
+    [Segments.PARAMS]: {
+      id: Joi.string().uuid().required(),
+    },
+  }),
+  productController.delete,
+);
 
 export default productsRoutes;
