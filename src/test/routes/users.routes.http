@@ -1,0 +1,15 @@
+# Verifica todas as rotas para os usuários.
+
+# Lista todos os usuários
+GET http://localhost:3000/users/
+Content-Type: application/json
+###
+
+POST http://localhost:3000/users/
+Content-Type: application/json
+{
+  "name": "Bruno Croner",
+  "email": 'br.croner@gmail.com',
+  "password": 'teste123',
+}
+###

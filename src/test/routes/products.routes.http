@@ -1,17 +1,17 @@
 # Verifica todas as rotas para os produtos.
 
 # Lista todos os produtos
-GET http://localhost:${process.env.DEV_PORT}/products/
+GET http://localhost:3000/products/
 Content-Type: application/json
 ###
 
 # Retorna apenas o produto com id igual
-GET http://http://localhost:${process.env.DEV_PORT}/products/id
+GET http://localhost:3000/products/id
 Content-Type: application/json
 ###
 
 # Cadastrar produto
-POST http://http://localhost:${process.env.DEV_PORT}/products/
+POST http://localhost:3000/products/
 Content-Type: application/json
 {
   "name": "Trilogia da Fundação",
@@ -21,7 +21,7 @@ Content-Type: application/json
 ###
 
 # Atualizar produto
-PUT http://http://localhost:${process.env.DEV_PORT}/products/id
+PUT http://localhost:3000/products/id
 Content-Type: application/json
 {
   "name": "Musashi - Box 3 volumes",
@@ -31,6 +31,6 @@ Content-Type: application/json
 ###
 
 # Deletar produto
-DELETE  http://http://localhost:${process.env.DEV_PORT}/products/id
+DELETE  http://localhost:3000/products/id
 Content-Type: application/json
 ###
